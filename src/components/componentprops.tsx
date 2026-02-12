@@ -68,25 +68,91 @@ import React from "react";
 
 //*------------------------
 //3.使用React.children特殊值
-interface Props {
-  children: React.ReactNode;
-}
+// interface Props {
+//   children: React.ReactNode;
+// }
+// export default function ComponentProps() {
+//   //子辈组件
+//   //React.FC<Props> 是 “Function Component” 的 TypeScript 类型别名，全称是 React.FunctionComponent<Props>。
+//   const Son: React.FC<Props> = (props) => {
+//     return (
+//       <>
+//         <h1>{props.children}</h1>
+//       </>
+//     );
+//   };
+
+//   return (
+//     <>
+//       <Son>
+//         <div>i am your father</div>
+//       </Son>
+//     </>
+//   );
+// }
+//----------------
+
+//子组件向父组件传值
+// export default function ComponentProps() {
+//   const dragonsee = (params: string) => {
+//     console.log("帝师说他见过", params);
+//   };
+//   interface Props {
+//     sponsbob: (params: string) => void;
+//     children: React.ReactNode;
+//   }
+//   //React.FC<Props> 是 “Function Component” 的 TypeScript 类型别名，全称是 React.FunctionComponent<Props>。
+//   //子组件接收函数, 在对应的事件中调用函数
+//   const Son: React.FC<Props> = (props) => {
+//     return (
+//       <>
+//         <button
+//           onClick={() => {
+//             props.sponsbob("龙");
+//           }}
+//         >
+//           click
+//         </button>
+//       </>
+//     );
+//   };
+
+//   return (
+//     <>
+//       <Son sponsbob={dragonsee}></Son>
+//     </>
+//   );
+// }
+//--------------------
+
+//兄弟组件通信
 export default function ComponentProps() {
-  //子辈组件
+  const dragonsee = (params: string) => {
+    console.log("帝师说他见过", params);
+  };
+  interface Props {
+    sponsbob: (params: string) => void;
+    children: React.ReactNode;
+  }
   //React.FC<Props> 是 “Function Component” 的 TypeScript 类型别名，全称是 React.FunctionComponent<Props>。
+  //子组件接收函数, 在对应的事件中调用函数
   const Son: React.FC<Props> = (props) => {
     return (
       <>
-        <h1>{props.children}</h1>
+        <button
+          onClick={() => {
+            props.sponsbob("龙");
+          }}
+        >
+          click
+        </button>
       </>
     );
   };
 
   return (
     <>
-      <Son>
-        <div>i am your father</div>
-      </Son>
+      <Son sponsbob={dragonsee}></Son>
     </>
   );
 }
