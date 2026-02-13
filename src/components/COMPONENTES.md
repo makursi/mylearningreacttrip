@@ -14,3 +14,8 @@ import React from "react";
 4. React.memo() ---> 优化函数组件，避免不必要的重渲染
 5. React.forwardRef() ---> 转发 ref 到子组件
 6. React.Children ---> 操作 props.children 的工具集
+
+# 受控组件和非受控组件
+
+1. 受控组价的数据源来自于React state, 非受控组件的值是DOM本身
+2. 获取值: 受控组件直接读取state, 非受控组件通过ref读DOM元素身上的值

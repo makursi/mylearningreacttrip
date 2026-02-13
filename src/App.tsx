@@ -2,14 +2,14 @@ import "./App.css";
 //方块组件
 // import Mystatehook from "./hooks/useStateChoria";
 // import ComponentProps from "./components/componentProps";
-import ComponentControlled from "./components/conponentConrtolled";
+import Portal from "./components/componentPortal";
 function App() {
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
       <div>
-        <ComponentControlled></ComponentControlled>
+        <Portal></Portal>
       </div>
     </>
   );
