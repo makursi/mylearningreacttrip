@@ -1,1 +1,9 @@
-[{ "name": "Choria" }, { "name": "Carla" }]
+{
+  "data": {
+    "id": 1,
+    "address": "九天云霄琉璃殿龙越门叁拾叁号",
+    "name": "帝师",
+    "age": 216,
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=小满"
+  }
+}
