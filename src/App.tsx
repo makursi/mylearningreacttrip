@@ -10,16 +10,13 @@ import "./App.css";
 // import Card from "./components/async/asyncCard";
 // import React, { useRef, useState, Suspense, lazy } from "react";
 // import { Skeleton } from "./components/async/conponentAsyncData";
-//
-import UseMyReducerHook from "./hooks/useReducerChoria";
+// import UseMyReducerHook from "./hooks/useReducerChoria";
 function App() {
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
-      <div>
-        <UseMyReducerHook></UseMyReducerHook>
-      </div>
+      <div></div>
     </>
   );
 }
