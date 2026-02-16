@@ -31,7 +31,6 @@ import { useReducer } from "react";
 // }
 
 //购物车案例
-
 export default function useMyReducerHook() {
   // const [state, dispatch] = useReducer(reducer, initialArg, ini()?);
   const initialData = [
@@ -84,11 +83,71 @@ export default function useMyReducerHook() {
             {data.map((item) => {
               return (
                 <tr key={item.id}>
-                  <td align="center"></td>
+                  <td align="center">
+                    {item.isEdit ? (
+                      <input
+                        onBlur={(e) => dispatch({ type: "EDIT", id: item.id })}
+                        onChange={(e) =>
+                          dispatch({
+                            type: "UPDATE_NAME",
+                            id: item.id,
+                            newName: e.target.value,
+                          })
+                        }
+                        value={item.name}
+                      ></input>
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
+                  </td>
+                  <td align="center">{item.price * item.count}</td>
+                  <td align="center">
+                    <button
+                      onClick={() => {
+                        dispatch({ type: "SUB", id: item.id });
+                      }}
+                    >
+                      SUB
+                    </button>
+                    <span>{item.count}</span>
+                    <button
+                      onClick={() => {
+                        dispatch({ type: "ADD", id: item.id });
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </td>
+                  <td align="center">
+                    <button
+                      onClick={() => {
+                        dispatch({ type: "EDIT", id: item.id });
+                      }}
+                    >
+                      编辑
+                    </button>
+                    <span>{item.count}</span>
+                    <button
+                      onClick={() => {
+                        dispatch({ type: "DELETE", id: item.id });
+                      }}
+                    >
+                      删除
+                    </button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={3}></td>
+              <td align="center">
+                总价:
+                {data.reduce((prev, next) => prev + next.price * next.count, 0)}
+              </td>
+            </tr>
+          </tfoot>
         </thead>
       </table>
     </>
