@@ -1,4 +1,5 @@
 const React = {
+  //es6新建方法方式
   createElement(type, props = {}, ...children) {
     return {
       type,

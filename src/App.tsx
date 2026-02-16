@@ -7,19 +7,18 @@ import "./App.css";
 //异步组件
 // import Suspenseuse from "./components/async/componentSuspense";
 //异步数据
-import Card from "./components/async/asyncCard";
-import React, { useRef, useState, Suspense, lazy } from "react";
-import { Skeleton } from "./components/async/conponentAsyncData";
+// import Card from "./components/async/asyncCard";
+// import React, { useRef, useState, Suspense, lazy } from "react";
+// import { Skeleton } from "./components/async/conponentAsyncData";
 //
+import UseMyReducerHook from "./hooks/useReducerChoria";
 function App() {
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
       <div>
-        <Suspense fallback={<Skeleton></Skeleton>}>
-          <Card></Card>
-        </Suspense>
+        <UseMyReducerHook></UseMyReducerHook>
       </div>
     </>
   );
