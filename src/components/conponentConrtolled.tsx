@@ -23,6 +23,8 @@
 // export default ComponentControlled;
 
 //非受控组件
+//非受控组件指的是该表单元素不受React的State管
+//表单的数据由DOM管理。通过useRef()来获取表单元素的值。
 
 // import React, { useRef } from "react";
 // const ComponentControlled: React.FC = () => {
