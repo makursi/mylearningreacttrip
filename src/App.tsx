@@ -11,13 +11,15 @@ import "./App.css";
 // import React, { useRef, useState, Suspense, lazy } from "react";
 // import { Skeleton } from "./components/async/conponentAsyncData";
 // import UseMyReducerHook from "./hooks/useReducerChoria";
-import TodoList from "./hooks/useImmerChoria";
+// import TodoList from "./hooks/useImmerChoria";
+import UseSyncExternalStore from "./hooks/useSyncExternalStore";
+
 function App() {
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
-      <TodoList></TodoList>
+      <UseSyncExternalStore></UseSyncExternalStore>
     </>
   );
 }
