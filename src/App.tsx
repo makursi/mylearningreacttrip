@@ -12,22 +12,30 @@ import "./App.css";
 // import { Skeleton } from "./components/async/conponentAsyncData";
 // import UseMyReducerHook from "./hooks/useReducerChoria";
 // import TodoList from "./hooks/useImmerChoria";
-import useStorage from "./hooks/useSyncExternalStore";
-
+// import useStorage from "./hooks/useSyncExternalStore";
+import useHistory from "./hooks/useSyncExternalStore";
 function App() {
-  const [count, setCount] = useStorage("data", 1);
+  const [history, push, replace] = useHistory();
 
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
-      <h3>{count}</h3>
+      <div>当前url:{history}</div>
+
       <button
         onClick={() => {
-          setCount(count + 1);
+          push("/ccc ");
         }}
       >
-        设置count
+        跳转
+      </button>
+      <button
+        onClick={() => {
+          replace("/bbb");
+        }}
+      >
+        替换
       </button>
     </>
   );

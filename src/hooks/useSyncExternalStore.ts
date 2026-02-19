@@ -23,36 +23,75 @@ import { useSyncExternalStore } from "react";
 // }
 // const res = useSyncExternalStore(subscribe,getSnapshot)
 // 返回 该res 的当前快照 , 在渲染逻辑中使用
-//1.实现useStorage hook
 
-export default function useStorage(key: any, defaultValue?: any) {
+//-----------------------------------------
+//1.实现useStorage hook 案例
+// export default function useStorage(key: any, defaultValue?: any) {
+//   const subscribe = (callback: () => void) => {
+//     window.addEventListener("storage", (e) => {
+//       callback();
+//       console.log("触发了localStorge事件", e);
+//     });
+
+//     return () => {
+//       //返回清理函数, 避免内存泄露
+//       window.removeEventListener("storage", callback);
+//     };
+//   };
+//   //获取当前值
+//   //当callback()被调用 -> 重新调用 getSnapshot() ->更新组件
+//   const getSnapshot = () => {
+//     return (
+//       (localStorage.getItem(key)
+//         ? JSON.parse(localStorage.getItem(key)!)
+//         : null) || defaultValue
+//     );
+//   };
+
+//   const setStorage = (value: any) => {
+//     //先保存当前的新值到localStorage
+//     localStorage.setItem(key, JSON.stringify(value));
+//     // 手动触发storage事件
+//     window.dispatchEvent(new StorageEvent("storage"));
+//   };
+//   const res = useSyncExternalStore(subscribe, getSnapshot);
+//   return [res, setStorage];
+// }
+
+// 2.订阅history实现路由跳转
+//popstate是浏览器原生的事件, 监听页面浏览历史记录变化,例如:用户点击前进后退
+//调用 history.pushState() 或 replaceState() 本身不会触发 popstate
+//window.dispatchEvent() 手动调用浏览器事件
+//history.pushState(state,title,url)/replaceState
+//state:附加数据, 通过popstate 事件获取
+//title:历史记录的标题
+//url:要显示在地址栏的新路径
+export default function useHistory() {
   const subscribe = (callback: () => void) => {
-    window.addEventListener("storage", (e) => {
-      callback();
-      console.log("触发了localStorge事件", e);
-    });
-
+    window.addEventListener("popstate", callback);
+    window.addEventListener("hashchange", callback);
     return () => {
-      //返回清理函数, 避免内存泄露
-      window.removeEventListener("storage", callback);
+      window.removeEventListener("popstate", callback);
+      window.removeEventListener("hashstate", callback);
     };
   };
-  //获取当前值
-  //当callback()被调用 -> 重新调用 getSnapshot() ->更新组件
+
+  //回调函数返回当前页面的url
   const getSnapshot = () => {
-    return (
-      (localStorage.getItem(key)
-        ? JSON.parse(localStorage.getItem(key)!)
-        : null) || defaultValue
-    );
+    return window.location.href;
   };
 
-  const setStorage = (value: any) => {
-    //先保存当前的新值到localStorage
-    localStorage.setItem(key, JSON.stringify(value));
-    // 手动触发storage事件
-    window.dispatchEvent(new StorageEvent("storage"));
+  const push = (path: string) => {
+    window.history.pushState(null, "", path);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
+
+  const replace = (path: string) => {
+    window.history.replaceState(null, "", path);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  };
+
   const res = useSyncExternalStore(subscribe, getSnapshot);
-  return [res, setStorage];
+
+  return [res, push, replace] as const;
 }
