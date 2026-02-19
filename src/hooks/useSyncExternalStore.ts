@@ -6,7 +6,7 @@
 //      4.服务端渲染支持
 //https://message163.github.io/react-docs/react/hooks/useSyncExternalStore.html
 
-import { useSyncExternalStore } from "react";
+// import { useSyncExternalStore } from "react";
 
 //callback 是React 传给你的一个"通知函数",当调用 callback()时, React 会重新渲染组件更新UI
 // const subscribe = (callback: () => void) => {
@@ -22,7 +22,7 @@ import { useSyncExternalStore } from "react";
 //   return data
 // }
 // const res = useSyncExternalStore(subscribe,getSnapshot)
-// 返回 该res 的当前快照 , 在渲染逻辑中使用
+// 返回值 该res 的当前快照 , 在渲染逻辑中使用
 
 //-----------------------------------------
 //1.实现useStorage hook 案例
@@ -66,32 +66,32 @@ import { useSyncExternalStore } from "react";
 //state:附加数据, 通过popstate 事件获取
 //title:历史记录的标题
 //url:要显示在地址栏的新路径
-export default function useHistory() {
-  const subscribe = (callback: () => void) => {
-    window.addEventListener("popstate", callback);
-    window.addEventListener("hashchange", callback);
-    return () => {
-      window.removeEventListener("popstate", callback);
-      window.removeEventListener("hashstate", callback);
-    };
-  };
+// export default function useHistory() {
+//   const subscribe = (callback: () => void) => {
+//     window.addEventListener("popstate", callback);
+//     window.addEventListener("hashchange", callback);
+//     return () => {
+//       window.removeEventListener("popstate", callback);
+//       window.removeEventListener("hashchange", callback);
+//     };
+//   };
 
-  //回调函数返回当前页面的url
-  const getSnapshot = () => {
-    return window.location.href;
-  };
+//   //回调函数返回当前页面的url
+//   const getSnapshot = () => {
+//     return window.location.href;
+//   };
 
-  const push = (path: string) => {
-    window.history.pushState(null, "", path);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  };
+//   const push = (path: string) => {
+//     window.history.pushState(null, "", path);
+//     window.dispatchEvent(new PopStateEvent("popstate"));
+//   };
 
-  const replace = (path: string) => {
-    window.history.replaceState(null, "", path);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  };
+//   const replace = (path: string) => {
+//     window.history.replaceState(null, "", path);
+//     window.dispatchEvent(new PopStateEvent("popstate"));
+//   };
 
-  const res = useSyncExternalStore(subscribe, getSnapshot);
+//   const res = useSyncExternalStore(subscribe, getSnapshot);
 
-  return [res, push, replace] as const;
-}
+//   return [res, push, replace] as const;
+// }

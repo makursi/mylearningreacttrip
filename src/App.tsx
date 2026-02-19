@@ -13,30 +13,18 @@ import "./App.css";
 // import UseMyReducerHook from "./hooks/useReducerChoria";
 // import TodoList from "./hooks/useImmerChoria";
 // import useStorage from "./hooks/useSyncExternalStore";
-import useHistory from "./hooks/useSyncExternalStore";
+// import useHistory from "./hooks/useSyncExternalStore";
+import { useEffect } from "react";
 function App() {
-  const [history, push, replace] = useHistory();
-
+  useEffect(() => {
+    fetch("api/list?keyWord=xxx")
+      .then((res) => res.json)
+      .then((data) => console.log(data));
+  }, []);
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
-      <div>当前url:{history}</div>
-
-      <button
-        onClick={() => {
-          push("/ccc ");
-        }}
-      >
-        跳转
-      </button>
-      <button
-        onClick={() => {
-          replace("/bbb");
-        }}
-      >
-        替换
-      </button>
     </>
   );
 }
