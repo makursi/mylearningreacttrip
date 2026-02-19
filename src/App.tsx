@@ -12,14 +12,23 @@ import "./App.css";
 // import { Skeleton } from "./components/async/conponentAsyncData";
 // import UseMyReducerHook from "./hooks/useReducerChoria";
 // import TodoList from "./hooks/useImmerChoria";
-import UseSyncExternalStore from "./hooks/useSyncExternalStore";
+import useStorage from "./hooks/useSyncExternalStore";
 
 function App() {
+  const [count, setCount] = useStorage("data", 1);
+
   return (
     <>
       <h1>练习案例</h1>
       {/* 案例引用 */}
-      <UseSyncExternalStore></UseSyncExternalStore>
+      <h3>{count}</h3>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        设置count
+      </button>
     </>
   );
 }
