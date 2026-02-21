@@ -23,3 +23,5 @@
 ## useEffect 就是 React 组件里的“事后小助手” 它会在组件渲染完成后，帮你做一些“副作用”事情（比如发请求、改标题、监听事件等）。
 
 ## “副作用” = 和 UI 渲染无关，但又必须做的事
+
+### React核心团队关于useEffect的博文:https://overreacted.io/a-complete-guide-to-useeffect/?spm=5176.28103460.0.0.49b063081TLDRb

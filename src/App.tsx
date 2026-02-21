@@ -1,5 +1,5 @@
 import "./App.css";
-
+// import "./hooks/effect/main.css";
 import UseEffectLayout from "./hooks/effect/useEffectlayout";
 function App() {
   return (
