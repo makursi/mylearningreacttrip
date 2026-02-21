@@ -1,11 +1,11 @@
 import "./App.css";
 
-import UseEffectChoria from "./hooks/effect/useEffectchoria";
+import UseEffectLayout from "./hooks/effect/useEffectlayout";
 function App() {
   return (
     <>
       <h1>使用案例</h1>
-      <UseEffectChoria></UseEffectChoria>
+      <UseEffectLayout></UseEffectLayout>
     </>
   );
 }

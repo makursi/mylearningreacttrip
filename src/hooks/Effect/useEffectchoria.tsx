@@ -149,67 +149,67 @@ import { useEffect, useState } from "react";
 // 再次执行 useEffect → console.log("render abc")
 //短时间内触发了两次更新
 
-//案例: 使用jsonplaceholder公共接口获取用户数据
-interface UserData {
-  name: string;
-  email: string;
-  username: string;
-  phone: string;
-  website: string;
-}
+//真实案例: 使用jsonplaceholder公共接口获取用户数据
+// interface UserData {
+//   name: string;
+//   email: string;
+//   username: string;
+//   phone: string;
+//   website: string;
+// }
 
-const defaultData: UserData = {
-  name: "帝师",
-  email: "sbExample.com",
-  username: "龙",
-  phone: "1302332325",
-  website: "bilibll.com",
-};
-export default function UseEffectChoria() {
-  const [userId, setUserId] = useState(1); // 假设初始用户ID为1
-  const [userData, setUserData] = useState<UserData | null>(defaultData);
+// const defaultData: UserData = {
+//   name: "帝师",
+//   email: "sbExample.com",
+//   username: "龙",
+//   phone: "1302332325",
+//   website: "bilibll.com",
+// };
+// export default function UseEffectChoria() {
+//   const [userId, setUserId] = useState(1); // 假设初始用户ID为1
+//   const [userData, setUserData] = useState<UserData | null>(defaultData);
 
-  //使用useEffect 发送请求获取目标id 信息
-  useEffect(() => {
-    try {
-      const fetchUserData = async () => {
-        const userdata = await fetch(
-          `https://jsonplaceholder.typicode.com/users/${userId}`,
-        );
+//   //使用useEffect 发送请求获取目标id 信息
+//   useEffect(() => {
+//     try {
+//       const fetchUserData = async () => {
+//         const userdata = await fetch(
+//           `https://jsonplaceholder.typicode.com/users/${userId}`,
+//         );
 
-        if (!userdata) {
-          console.log("服务器响应失败");
-          return;
-        }
-        const data = await userdata.json();
+//         if (!userdata) {
+//           console.log("服务器响应失败");
+//           return;
+//         }
+//         const data = await userdata.json();
 
-        setUserData(data);
-      };
-      fetchUserData();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [userId]);
-  //传用户id
-  function handlechange(event: React.ChangeEvent<HTMLInputElement>) {
-    setUserId(parseInt(event.target.value));
-  }
-  return (
-    <>
-      <div>
-        <h1>用户信息</h1>
+//         setUserData(data);
+//       };
+//       fetchUserData();
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }, [userId]);
+//   //传用户id
+//   function handlechange(event: React.ChangeEvent<HTMLInputElement>) {
+//     setUserId(parseInt(event.target.value));
+//   }
+//   return (
+//     <>
+//       <div>
+//         <h1>用户信息</h1>
 
-        <label htmlFor="">
-          <input type="number" onChange={handlechange} value={userId} />
-        </label>
-        <div>
-          <h2>用户信息</h2>
-          <p>{userData.name}</p>
-          <p>{userData.username}</p>
-          <p>{userData.phone}</p>
-          <p>{userData.website}</p>
-        </div>
-      </div>
-    </>
-  );
-}
+//         <label htmlFor="">
+//           <input type="number" onChange={handlechange} value={userId} />
+//         </label>
+//         <div>
+//           <h2>用户信息</h2>
+//           <p>{userData.name}</p>
+//           <p>{userData.username}</p>
+//           <p>{userData.phone}</p>
+//           <p>{userData.website}</p>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
