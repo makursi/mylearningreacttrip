@@ -2,7 +2,7 @@
 //参数是ref对象的初始值
 //返回值为一个对象值,其中对象的属性指向传入的初始值
 // https://message163.github.io/react-docs/react/hooks/useRef.html
-import { useRef, useState } from "react";
+// import { useRef, useState } from "react";
 //使用useRef操作DOM
 // export default function UseRefChoria() {
 //   let num = useRef(0);
@@ -25,31 +25,31 @@ import { useRef, useState } from "react";
 
 //计数器案例
 
-function UseRefChoria() {
-  console.log("render");
-  let timer = useRef<NodeJS.Timeout | null>(null);
-  let [count, setCount] = useState(0);
-  const handleClick = () => {
-    timer.current = setInterval(() => {
-      setCount((count) => count + 1);
-    }, 300);
-  };
-  const handleEnd = () => {
-    if (timer.current) {
-      clearInterval(timer.current);
-      timer.current = null;
-    }
-  };
-  return (
-    <div>
-      <button onClick={handleClick}>开始计数</button>
-      <button onClick={handleEnd}>结束计数</button>
-      <div>{count}</div>
-    </div>
-  );
-}
+// function UseRefChoria() {
+//   console.log("render");
+//   let timer = useRef<NodeJS.Timeout | null>(null);
+//   let [count, setCount] = useState(0);
+//   const handleClick = () => {
+//     timer.current = setInterval(() => {
+//       setCount((count) => count + 1);
+//     }, 300);
+//   };
+//   const handleEnd = () => {
+//     if (timer.current) {
+//       clearInterval(timer.current);
+//       timer.current = null;
+//     }
+//   };
+//   return (
+//     <div>
+//       <button onClick={handleClick}>开始计数</button>
+//       <button onClick={handleEnd}>结束计数</button>
+//       <div>{count}</div>
+//     </div>
+//   );
+// }
 
-export default UseRefChoria;
+// export default UseRefChoria;
 
 // 注意事项
 // 组件在重新渲染的时候，useRef的值不会被重新初始化。

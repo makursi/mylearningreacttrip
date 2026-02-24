@@ -1,10 +1,10 @@
 import "./App.css";
-import UseRefChoria from "./hooks/useRefChoria";
+import UseImperativeHandle from "./hooks/useImperativeHandleChoria";
 function App() {
   return (
     <>
       <h1>使用案例</h1>
-      <UseRefChoria></UseRefChoria>
+      <UseImperativeHandle></UseImperativeHandle>
     </>
   );
 }
