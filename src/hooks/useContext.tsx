@@ -26,6 +26,7 @@
 //    setTheme: (theme: string) => void;
 // }
 
+//React19 , 父子组件更新亮暗主题案例
 // const Child = () => {
 //    const themeContext = useContext(ThemeContext);
 //    const styles = {
