@@ -5,7 +5,7 @@
 //2.    dependencies(可选)：setup中使用到的响应式值列表(props、state等)。必须以数组形式编写如[dep1, dep2]。不传则每次重渲染都执行Effect。
 
 //使用副作用函数能做的事情useEffect都能做，例如操作DOM、网络请求、计时器等等。
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 //1.基本使用
 //操作DOM
