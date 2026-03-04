@@ -19,14 +19,14 @@
 //   );
 // }
 
+//React19 , 父子组件更新亮暗主题案例
 // import React, { useContext, useState } from 'react';
+//创建全局上下文
 // const ThemeContext = React.createContext<ThemeContextType>({} as ThemeContextType);
 // interface ThemeContextType {
 //    theme: string;
 //    setTheme: (theme: string) => void;
 // }
-
-//React19 , 父子组件更新亮暗主题案例
 // const Child = () => {
 //    const themeContext = useContext(ThemeContext);
 //    const styles = {
