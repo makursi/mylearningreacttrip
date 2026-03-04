@@ -1,10 +1,10 @@
 import "./App.css";
-import UseMemo from "./hooks/useMemoChoria";
+import UseCallback from "./hooks/useCallback";
 function App() {
   return (
     <>
       <h1>使用案例</h1>
-      <UseMemo></UseMemo>
+      <UseCallback></UseCallback>
     </>
   );
 }
