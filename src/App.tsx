@@ -1,10 +1,10 @@
 import "./App.css";
-import CssInJs from "./CSS/cssinjs";
+import AtomicCSS from "./CSS/AtomicCSS";
 function App() {
   return (
     <>
       <h1>使用案例</h1>
-      <CssInJs></CssInJs>
+      <AtomicCSS></AtomicCSS>
     </>
   );
 }
