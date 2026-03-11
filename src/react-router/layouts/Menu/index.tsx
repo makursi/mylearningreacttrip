@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import type { MenuProps } from "antd";
 
 export default function Menu() {
+  //导入useNavigate hook 的作用
   const navigate = useNavigate();
   const handleClick: MenuProps["onClick"] = (info) => {
     navigate(info.key); // 点击菜单项时，导航到对应的页面

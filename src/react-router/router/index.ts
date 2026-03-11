@@ -5,6 +5,10 @@ import { createBrowserRouter } from "react-router";
 import About from "../pages/About/about";
 import Home from "../pages/Home/home";
 import Layout from "../layouts/index";
+
+//懒加载模组
+const sleep = (message: number) =>
+  new Promise((resolve) => setTimeout(resolve, message));
 const router = createBrowserRouter([
   {
     //第二种:布局路由
@@ -18,13 +22,23 @@ const router = createBrowserRouter([
       {
         //第五种:动态路由
         //使用useParams 去获取路由参数
-        path: "home/:id",
+        // path: "home/:id",
+        path: "home",
         index: true,
         Component: Home,
       },
       {
         path: "about",
         Component: About,
+        lazy: async () => {
+          await sleep(2000);
+          const Component = await import("../pages/About/about");
+          console.log(Component);
+
+          return {
+            Component: Component.default,
+          };
+        },
       },
     ],
   },
