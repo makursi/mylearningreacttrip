@@ -1,10 +1,16 @@
-import "./App.css";
-import AtomicCSS from "./CSS/AtomicCSS";
+// import "./App.css";
+
+//引入路由
+import router from "./react-router/router/index";
+
+import { RouterProvider } from "react-router";
+
 function App() {
   return (
     <>
       <h1>使用案例</h1>
-      <AtomicCSS></AtomicCSS>
+
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }

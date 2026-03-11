@@ -1,5 +1,8 @@
 // 在 React 中，状态（state）是不可变的（immutable）。
 // 这意味着：你不能直接修改对象或数组，而必须创建一个全新的副本。
+//useimmer库在对于使用useState hook 去定义和处理复杂状态,提供了更好用的方法
+// 在使用useState 时在处理嵌套的对象属性时,需要在使用拓展运算符来先进行对象属性的复制
+// 而使用useImmer 时,则可以直接对目标对象的属性进行更改
 import { useImmer } from "use-immer";
 // import { useState } from "react";
 // export default function useMyHookImmer() {
