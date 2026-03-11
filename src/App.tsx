@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <h1>使用案例</h1>
-
       <RouterProvider router={router}></RouterProvider>
     </>
   );
